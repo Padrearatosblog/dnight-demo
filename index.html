@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>D’Night Pub Karaoke · Karaoke nocturno en Pamplona</title>
+  <meta name="description" content="D’Night Pub Karaoke en Pamplona. Abierto de lunes a sábado de 23:00 a 03:30. Cómo llegar, Instagram y reservas por WhatsApp." />
+
+  <!-- Tipografía (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#070910;
+      --panel:#0f1320;
+      --panel2:#0c1020;
+      --text:#eef1f6;
+      --muted:#b9c2cf;
+      --line:rgba(255,255,255,.10);
+
+      --accent:#ff3d8d;  /* neón rosa */
+      --accentB:#8b5cf6; /* violeta */
+      --wa:#22c55e;
+
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --shadow2: 0 10px 28px rgba(0,0,0,.35);
+      --r:20px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 520px at 16% 8%, rgba(255,61,141,.16), transparent 58%),
+        radial-gradient(900px 520px at 85% 28%, rgba(139,92,246,.13), transparent 62%),
+        radial-gradient(900px 520px at 55% 85%, rgba(34,197,94,.08), transparent 62%),
+        var(--bg);
+      line-height:1.45;
+      overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+
+    .wrap{max-width:1060px; margin:0 auto; padding:26px}
+
+    /* Top bar */
+    .top{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:10px 0 18px;
+    }
+    .brand{
+      display:flex; align-items:flex-start; flex-direction:column; gap:2px;
+    }
+    .brandTitle{
+      font-weight:900; letter-spacing:.2px; font-size:18px;
+    }
+    .brandSub{
+      color:var(--muted); font-size:13px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      border-radius:999px;
+      font-size:13px;
+      color:var(--muted);
+      white-space:nowrap;
+      backdrop-filter: blur(6px);
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(180deg, rgba(7,9,16,.40), rgba(7,9,16,.92)),
+        radial-gradient(700px 280px at 20% 20%, rgba(255,61,141,.30), transparent 60%),
+        radial-gradient(600px 260px at 75% 30%, rgba(139,92,246,.22), transparent 65%),
+        url("img/hero.jpg") center / cover no-repeat;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(90deg, rgba(7,9,16,.72), rgba(7,9,16,.20));
+      opacity:.9;
+      pointer-events:none;
+    }
+    .heroInner{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1.35fr .85fr;
+      gap:18px;
+      padding:30px;
+      z-index:1;
+    }
+    @media (max-width: 920px){
+      .heroInner{grid-template-columns:1fr}
+    }
+
+    h1{
+      margin:0;
+      font-size:46px;
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    .lead{
+      margin:12px 0 0 0;
+      color:var(--muted);
+      font-size:16px;
+      max-width:54ch;
+    }
+
+    .metaRow{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:16px;
+    }
+    .chip{
+      font-size:13px;
+      color:var(--muted);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      padding:8px 10px;
+      border-radius:999px;
+      backdrop-filter: blur(6px);
+    }
+
+    .ctaRow{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:18px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      font-weight:800;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.09)}
+    .btnPrimary{
+      border-color: rgba(255,61,141,.45);
+      background: linear-gradient(180deg, rgba(255,61,141,.30), rgba(255,61,141,.12));
+    }
+    .btnPrimary:hover{border-color: rgba(255,61,141,.65)}
+    .btnGhost{
+      background:rgba(255,255,255,.05);
+    }
+    .btnWA{
+      border-color: rgba(34,197,94,.60);
+      background: linear-gradient(180deg, rgba(34,197,94,.26), rgba(34,197,94,.12));
+    }
+    .btnWA:hover{border-color: rgba(34,197,94,.78)}
+
+    /* Side card in hero */
+    .sideCard{
+      border:1px solid var(--line);
+      background: rgba(10,14,26,.55);
+      border-radius: var(--r);
+      box-shadow: var(--shadow2);
+      padding:16px;
+      backdrop-filter: blur(10px);
+    }
+    .sideTitle{
+      margin:0 0 10px 0;
+      font-weight:900;
+      font-size:16px;
+      letter-spacing:.2px;
+    }
+    .sideLine{
+      height:1px; background:var(--line);
+      margin:12px 0;
+    }
+    .sideP{margin:0; color:var(--muted)}
+    .sideP b{color:var(--text)}
+    .note{margin-top:10px; font-size:13px; color:var(--muted)}
+
+    /* Sections */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+      margin-top:16px;
+    }
+    .card{
+      grid-column: span 6;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--r);
+      box-shadow: var(--shadow2);
+      padding:18px;
+      transition: transform .15s ease;
+    }
+    .card:hover{transform: translateY(-1px)}
+    .card h2{
+      margin:0 0 8px 0;
+      font-size:18px;
+      letter-spacing:-.2px;
+    }
+    .card p{margin:0; color:var(--muted)}
+    .list{margin:10px 0 0 0; padding-left:18px; color:var(--muted)}
+    .map{
+      width:100%;
+      height:320px;
+      border:0;
+      border-radius:14px;
+      margin-top:12px;
+      opacity:.95;
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .media{
+      width:100%;
+      border-radius:14px;
+      margin-top:12px;
+      display:block;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.25);
+    }
+    .caption{
+      margin-top:10px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .wide{grid-column: span 12;}
+    @media (max-width: 920px){
+      .card{grid-column: span 12;}
+      h1{font-size:36px}
+    }
+
+    /* Footer */
+    footer{
+      margin:26px 0 10px;
+      color:var(--muted);
+      font-size:13px;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      opacity:.95;
+    }
+
+    /* WhatsApp floating button */
+    .waFloat{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      width:56px;
+      height:56px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: rgba(34,197,94,.95);
+      box-shadow: 0 18px 36px rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.22);
+      z-index:999;
+      font-weight:900;
+      transition: transform .15s ease;
+    }
+    .waFloat:hover{transform: translateY(-1px)}
+    .waFloat span{font-size:22px; color:#071016}
+
+    /* Smooth reveal */
+    .reveal{
+      opacity:0;
+      transform: translateY(10px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .reveal.show{
+      opacity:1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <div class="brandTitle">D’Night Pub Karaoke</div>
+        <div class="brandSub">Pamplona · Karaoke · Pub</div>
+      </div>
+      <div class="pill">🌙 Noche & madrugada</div>
+    </div>
+
+    <section class="hero reveal">
+      <div class="heroInner">
+        <div>
+          <h1>Karaoke nocturno en Pamplona</h1>
+          <p class="lead">
+            Canta, disfruta y alarga la noche con amigos. Ambiente de pub, copas y karaoke hasta la madrugada.
+          </p>
+
+          <div class="metaRow">
+            <span class="chip">🕒 L–S · 23:00–03:30</span>
+            <span class="chip">❌ Domingos cerrado</span>
+            <span class="chip">📍 Monasterio de Aberin, 5 · 31011</span>
+          </div>
+
+          <div class="ctaRow">
+            <a class="btn btnWA" id="btnWA" href="#" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+            <a class="btn btnPrimary" id="btnMaps" href="#" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="btn btnGhost" id="btnIG" href="#" target="_blank" rel="noopener">Instagram</a>
+          </div>
+
+          <div class="metaRow" style="margin-top:12px;">
+            <span class="chip">🎤 Karaoke</span>
+            <span class="chip">🍸 Copas</span>
+            <span class="chip">🎉 Cumpleaños</span>
+            <span class="chip">🌃 Madrugada</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="sideCard">
+            <p class="sideTitle">Horario</p>
+            <p class="sideP"><b>Lunes a sábado:</b> 23:00 – 03:30</p>
+            <p class="sideP" style="margin-top:8px;"><b>Domingos:</b> cerrado</p>
+            <div class="sideLine"></div>
+            <p class="sideP">Si vienes en grupo o celebras algo, escríbenos y te informamos.</p>
+            <p class="note">📲 Respuesta rápida por WhatsApp</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card reveal">
+        <h2>Buen ambiente, cero complicaciones</h2>
+        <p>Un sitio para venir con amigos, pedir una copa y cantar sin vergüenza. Si buscas una noche diferente en Pamplona, este es el plan.</p>
+        <ul class="list">
+          <li>Contacto rápido por WhatsApp</li>
+          <li>Perfecto para celebraciones</li>
+          <li>Ubicación clara + mapa</li>
+        </ul>
+      </div>
+
+      <div class="card reveal">
+        <h2>Dónde estamos</h2>
+        <p><b>Calle Monasterio de Aberin, 5</b><br/>31011 Pamplona, Navarra</p>
+        <iframe
+          class="map"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Calle%20Monasterio%20de%20Aberin%205%2C%2031011%20Pamplona%2C%20Navarra&output=embed">
+        </iframe>
+        <div class="caption">Pulsa “Cómo llegar” para abrir Maps en tu móvil.</div>
+      </div>
+
+      <!-- Imagen cartel "Karaoke" + Video -->
+      <div class="card reveal">
+        <h2>Ambiente</h2>
+        <p>Luces, música y el momento de subir al micro. Así se vive la noche.</p>
+        <img class="media" src="img/karaoke-1.jpg" alt="Cartel de karaoke en D’Night Pub Karaoke" />
+        <div class="caption">✨ Un clásico: luces de karaoke y noche.</div>
+      </div>
+
+      <div class="card reveal">
+        <h2>Vídeo</h2>
+        <p>Un vistazo rápido a la vibra del local.</p>
+        <video class="media" controls muted playsinline preload="metadata" poster="img/karaoke-1.jpg">
+          <source src="video/karaoke.mp4" type="video/mp4">
+          Tu navegador no soporta video.
+        </video>
+        <div class="caption">Tip: mejor verlo en móvil (su público entra desde ahí).</div>
+      </div>
+
+      <div class="card wide reveal">
+        <h2>¿Cantamos esta noche?</h2>
+        <p>Escríbenos y te informamos al momento.</p>
+        <div class="ctaRow" style="margin-top:12px;">
+          <a class="btn btnWA" id="btnWA2" href="#" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+          <a class="btn btnGhost" id="btnCall" href="#" rel="noopener">Llamar</a>
+          <a class="btn btnGhost" id="btnIG2" href="#" target="_blank" rel="noopener">Ver Instagram</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="reveal">
+      <span>© <span id="year"></span> D’Night Pub Karaoke · Pamplona</span>
+      <span style="opacity:.85;">Demo web · hecha por Bryans</span>
+    </footer>
+  </div>
+
+  <!-- WhatsApp floating -->
+  <a class="waFloat" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <span>WA</span>
+  </a>
+
+  <script>
+    // ===== CONFIG =====
+    const PHONE_E164 = "34699213918"; // +34 699 21 39 18
+    const IG_URL = "https://www.instagram.com/dnightpubkaraoke/";
+    const ADDRESS = "Calle Monasterio de Aberin, 5, 31011 Pamplona, Navarra";
+
+    const WA_TEXT = encodeURIComponent(
+      "Hola! Quiero reservar / consultar para esta noche en D’Night Pub Karaoke. " +
+      "Somos __ personas y llegaríamos sobre las __. ¿Tenéis disponibilidad?"
+    );
+
+    const waLink = `https://wa.me/${PHONE_E164}?text=${WA_TEXT}`;
+    const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`;
+    const callLink = `tel:+${PHONE_E164}`;
+
+    document.getElementById("btnWA").href = waLink;
+    document.getElementById("btnWA2").href = waLink;
+    document.getElementById("waFloat").href = waLink;
+
+    document.getElementById("btnIG").href = IG_URL;
+    document.getElementById("btnIG2").href = IG_URL;
+
+    document.getElementById("btnMaps").href = mapsLink;
+    document.getElementById("btnCall").href = callLink;
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Reveal on scroll (suave)
+    const els = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add("show");
+      });
+    }, {threshold: 0.12});
+    els.forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
